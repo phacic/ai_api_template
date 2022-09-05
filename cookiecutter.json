@@ -1,0 +1,6 @@
+{
+    "model_name": "a_new_model",
+    "docker_working_dir": "/api",
+    "name":"your_name",
+    "email": "your_name@email.com"
+}

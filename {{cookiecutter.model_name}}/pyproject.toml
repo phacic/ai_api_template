@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "{{cookiecutter.model_name}}"
+version = "0.1.0"
+description = ""
+authors = ["{{cookiecutter.name}} <{{cookiecutter.email}}>"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+pydantic = "^1.9.1"
+fastapi = "^0.79.0"
+python-multipart = "^0.0.5"
+uvicorn = "^0.18.2"
+starlette-prometheus = "^0.9.0"
+torch = "^1.12.0"
+# torchvision = "^0.13.0"
+# transformers = "^4.20.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+pytest-asyncio="0.16.0"
+isort = "^5.10.1"
+black = "^22.6.0"
+flake8 = "^5.0.3"
+mypy = "^0.971"
+
+[tool.mypy]
+# unfortunately cannot inject dependencies into super-linter
+# so we have to ignore the imports as they will not have typehints
+ignore_missing_imports = true
+
+warn_unused_configs = true
+disallow_any_generics = true
+# disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+# disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_reexport = true
+strict_equality = true
+
+
+[tool.black]
+experimental-string-processing = true
