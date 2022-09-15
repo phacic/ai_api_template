@@ -4,9 +4,13 @@ FROM python:3.9
 # Create work directory
 WORKDIR {{cookiecutter.docker_working_dir}}
 
-#Install poetry env, project dependecny and model files
-COPY poetry.lock pyproject.toml ./
-RUN pip install --no-cache-dir poetry==1.1.11 && poetry config virtualenvs.create false \ 
+# upgrade pip wheel setuptools
+RUN pip install --no-cache-dir --upgrade pip wheel setuptools 
+
+# Install poetry env, project dependecny and model files
+COPY poetry.lock* pyproject.toml ./
+RUN pip install --no-cache-dir poetry==1.2.0 \
+    && poetry config virtualenvs.create false \ 
     && poetry install --no-interaction --no-ansi
 
 # Copy files
